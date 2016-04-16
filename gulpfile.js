@@ -1,14 +1,15 @@
-var gulp 				= require('gulp'),
-    postcss 		= require('gulp-postcss'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    lost 				= require('lost'),
-    rucksack    = require('rucksack-css'),
-    imagemin		= require('gulp-imagemin'),
-    htmlmin 		= require('gulp-htmlmin');
+var gulp 				 = require('gulp'),
+    postcss 		 = require('gulp-postcss'),
+    sourcemaps   = require('gulp-sourcemaps'),
     precss       = require('precss'),
+    lost 				 = require('lost'),
+    rucksack     = require('rucksack-css'),
+    flexboxFixes = require('postcss-flexbugs-fixes');
+    imagemin		 = require('gulp-imagemin'),
+    htmlmin 		 = require('gulp-htmlmin');
 
-var browserSync = require('browser-sync');
-var reload 			= browserSync.reload;
+var browserSync  = require('browser-sync');
+var reload 			 = browserSync.reload;
 
 // Styles - PostCSS, Lost, Rucksack, sourcemaps
 gulp.task('styles', function() {
@@ -19,7 +20,8 @@ gulp.task('styles', function() {
 			lost(),
 			rucksack({
 				autoprefixer: true
-			})
+			}),
+			flexboxFixes()
 		]))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('./dist/css'))
@@ -59,13 +61,14 @@ gulp.task('images', function() {
 });
 
 // Minify
-gulp.task('minify', function() {
+gulp.task('markup', function() {
 	return gulp.src('src/*.html')
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(gulp.dest('dist'))
 });
 
 // Build
-gulp.task('build', ['styles', 'minify', 'images']);
+gulp.task('build', ['styles', 'markup', 'images']);
 
-gulp.task('default', ['browser-sync', 'watch', 'styles', 'images']);
+// Default
+gulp.task('default', ['browser-sync', 'watch', 'styles', 'images', 'markup']);
