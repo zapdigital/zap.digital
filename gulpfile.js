@@ -2,7 +2,8 @@ var gulp 				= require('gulp'),
     postcss 		= require('gulp-postcss'),
     sourcemaps  = require('gulp-sourcemaps'),
     lost 				= require('lost'),
-    rucksack    = require('rucksack-css');
+    rucksack    = require('rucksack-css'),
+    imagemin		= require('gulp-imagemin');
 
 var browserSync = require('browser-sync');
 var reload 			= browserSync.reload;
@@ -39,7 +40,16 @@ gulp.task('watch', function() {
 
 	// Watch html files
 	gulp.watch('dist/*.html', reload);
-
 });
 
-gulp.task('default', ['browser-sync', 'watch', 'styles']);
+// Images
+gulp.task('images', function() {
+	return gulp.src('src/img/*')
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}]
+		}))
+		.pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('default', ['browser-sync', 'watch', 'styles', 'images']);
