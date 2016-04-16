@@ -11,6 +11,7 @@ This framework is using:
 - [Browser-Sync](https://www.browsersync.io/)
 
 ## To Do
-- [ ] move HTML, images to src folder
-- [ ] add minification to build process
-- [ ] optimize images
+- [x] move HTML, images to src folder
+- [x] add minification to build process
+- [x] optimize images
+- [ ] minify css
