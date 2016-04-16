@@ -19,7 +19,7 @@ gulp.task('styles', function() {
 				autoprefixer: true
 			})
 		]))
-		.pipe(sourcemaps.write('./'))
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('./dist/css'))
 		.pipe(reload({stream: true}));
 });
