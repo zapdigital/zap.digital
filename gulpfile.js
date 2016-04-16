@@ -41,6 +41,9 @@ gulp.task('watch', function() {
 
 	// Watch html files
 	gulp.watch('./src/*.html', ['minify', reload]);
+
+	// Watch image files
+	gulp.watch('./src/img/*', ['images', reload]);
 });
 
 // Images
