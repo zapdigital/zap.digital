@@ -5,6 +5,7 @@ var gulp 				= require('gulp'),
     rucksack    = require('rucksack-css'),
     imagemin		= require('gulp-imagemin'),
     htmlmin 		= require('gulp-htmlmin');
+    precss       = require('precss'),
 
 var browserSync = require('browser-sync');
 var reload 			= browserSync.reload;
@@ -14,6 +15,7 @@ gulp.task('styles', function() {
 	return gulp.src('./src/css/*.css')
 		.pipe(sourcemaps.init())
 		.pipe(postcss([
+			precss(),
 			lost(),
 			rucksack({
 				autoprefixer: true
