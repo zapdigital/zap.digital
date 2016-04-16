@@ -63,4 +63,7 @@ gulp.task('minify', function() {
 		.pipe(gulp.dest('dist'))
 });
 
+// Build
+gulp.task('build', ['styles', 'minify', 'images']);
+
 gulp.task('default', ['browser-sync', 'watch', 'styles', 'images']);
