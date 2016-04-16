@@ -52,4 +52,9 @@ gulp.task('images', function() {
 		.pipe(gulp.dest('dist/img'));
 });
 
+// Minify
+gulp.task('minify', function() {
+
+});
+
 gulp.task('default', ['browser-sync', 'watch', 'styles', 'images']);
