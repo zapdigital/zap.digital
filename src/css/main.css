@@ -7,7 +7,6 @@
 @lost flexbox flex;
 
 body {
-	lost-center: 1440px;
 }
 
 a:visited {
@@ -16,6 +15,7 @@ a:visited {
 
 section {
 	lost-utility: clearfix;
+	lost-flex-container: row;
 }
 
 

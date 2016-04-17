@@ -5,16 +5,6 @@
 /* Support Flexbox with Lost Grid */
 
 body {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-flow: row wrap;
-	    -ms-flex-flow: row wrap;
-	        flex-flow: row wrap;
-	max-width: 1440px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 a:visited {
@@ -23,6 +13,13 @@ a:visited {
 
 section {
 	*zoom: 1;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	    -ms-flex-flow: row wrap;
+	        flex-flow: row wrap;
 }
 
 section:before {
