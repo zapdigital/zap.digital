@@ -1,4 +1,17 @@
-node_modules/
-npm-debug.log
+# Build files
+dist/
+.publish
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# OS Specific files
 .DS_Store
-dist/bundle.js
