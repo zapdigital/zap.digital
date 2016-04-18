@@ -2,6 +2,7 @@
 ```npm install``` to install dependencies
 `gulp` to start a Live Reload enabled Browser-Sync server
 `gulp build` to build static assets
+`gulp deploy` to build static assets & upload them to GH Pages
 
 ## Slim
 We need Slim in version 3.0.2 or greater. If you don't have Slim installed, please install Ruby (and RubyGems) first and run
