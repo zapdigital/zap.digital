@@ -1,12 +1,12 @@
-var gulp 				 = require('gulp'),
-    postcss 		 = require('gulp-postcss'),
-    sourcemaps   = require('gulp-sourcemaps'),
-    precss       = require('precss'),
-    lost 				 = require('lost'),
-    rucksack     = require('rucksack-css'),
-    flexboxFixes = require('postcss-flexbugs-fixes');
-    imagemin		 = require('gulp-imagemin'),
-    htmlmin 		 = require('gulp-htmlmin');
+var gulp 				 = require('gulp');
+var postcss 		 = require('gulp-postcss');
+var sourcemaps   = require('gulp-sourcemaps');
+var precss       = require('precss');
+var lost 				 = require('lost');
+var rucksack     = require('rucksack-css');
+var flexboxFixes = require('postcss-flexbugs-fixes');
+var imagemin		 = require('gulp-imagemin');
+var slim 				 = require('gulp-slim');
 
 var browserSync  = require('browser-sync');
 var reload 			 = browserSync.reload;
@@ -43,8 +43,8 @@ gulp.task('watch', function() {
 	// Watch css files
 	gulp.watch('./src/**/*.css', ['styles', reload]);
 
-	// Watch html files
-	gulp.watch('./src/*.html', ['minify', reload]);
+	// Watch slim files
+	gulp.watch('./src/views/*.slim', ['markup', reload]);
 
 	// Watch image files
 	gulp.watch('./src/img/*', ['images', reload]);
@@ -62,9 +62,12 @@ gulp.task('images', function() {
 
 // Minify
 gulp.task('markup', function() {
-	return gulp.src('src/*.html')
-		.pipe(htmlmin({collapseWhitespace: true}))
-		.pipe(gulp.dest('dist'))
+	return gulp.src('src/views/*.slim')
+		.pipe(slim({
+			require: 'slim/include',
+			options: 'include_dirs=["./src/views/includes"]'
+    }))
+    .pipe(gulp.dest('dist/'));
 });
 
 // Build
